@@ -1,7 +1,7 @@
+import os
 import stdiomask
 from tabulate import tabulate as t
 import mysql.connector as s
-import os
 def clear():
     abcd=os.system('cls')
     return abcd
@@ -157,11 +157,11 @@ def best():
         c.execute('''select * from '''+x+''';''')
         d=c.fetchall()
         for r in d:
-            z=(int(r[4]))/(int(r[3]))
+            z=(int(r[5]))/(int(r[4]))
             L.append(z)
         a=max(L)
         e=L.index(a)
-        print("The best " +x+ " is:",d[e][0])
+        print("The best " +x+ " is:",d[e][0],d[e][1])
     x=input()
    
 def delete():
@@ -179,7 +179,7 @@ def search():
     z=input("Enter name of the table(batsman/bowler):")
     b=input("Enter Player_ID of player to be searched :")
     if z.lower()=='batsman': 
-        c.execute('''select * from batsman where Name=(%s);''',(b,))
+        c.execute('''select * from batsman where Player_ID=(%s);''',(b,))
         row=c.fetchall()
         an=["Player_ID","Name","Jersey_no","Batting_type","No_of_innings_batted","Runs","Best_score","50s","100s"]
         ac=[r for r in row]
